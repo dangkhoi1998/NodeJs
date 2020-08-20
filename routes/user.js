@@ -1,0 +1,18 @@
+const express = require('express')
+const router = require('express-promise-router')()
+
+const UserController = require('../controllers/user')
+router.route('/')
+  .get(UserController.index)
+  .post(UserController.newUser)
+  .patch()
+  .put()
+  .delete()
+router.route('/:userID')
+  .get(UserController.getUser)
+  .put(UserController.replaceUser)
+  .patch(UserController.updateUser)
+router.route('/:userID/decks')
+  .get(UserController.getUserDeck)
+  .post(UserController.newUserDeck)
+module.exports = router
